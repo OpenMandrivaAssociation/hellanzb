@@ -64,5 +64,5 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(-,root,root,-)
 %{_docdir}/%{name}/
-%{py_platsitedir}/*
+%{py_puresitedir}/*
 %{_bindir}/%{name}
