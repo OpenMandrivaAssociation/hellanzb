@@ -1,13 +1,13 @@
 Name:           hellanzb
 Version:        0.13
-Release:        %mkrel 2
+Release:        %mkrel 3
 Summary:        Hands-free nzb downloader and post processor
 
 Group:          Networking/News
 License:        BSD
 URL:            http://www.hellanzb.com/trac/
 Source0:        http://www.hellanzb.com/distfiles/hellanzb-%{version}.tar.gz
-Source1:        README.Mandriva
+Source1:        README.urpmi
 Patch0:         hellanzb-configuration-location3.patch
 Patch1:         hellanzb-unrar-is-optional.patch
 Patch2:         hellanzb-remove-bogus-shebang.patch
@@ -46,23 +46,21 @@ sed --in-place 's|\*PKGNAME\*|%{name}|'   Hellanzb/Core.py
 
 
 %install
-rm -rf $RPM_BUILD_ROOT
-mkdir -p $RPM_BUILD_ROOT/%{_sysconfdir}
-%{__python} -c 'import setuptools; execfile("setup.py")' install --skip-build --root $RPM_BUILD_ROOT
+rm -rf %{buildroot}
+mkdir -p %{buildroot}%{_sysconfdir}
+%{__python} -c 'import setuptools; execfile("setup.py")' install --skip-build --root %{buildroot}
 
-mv $RPM_BUILD_ROOT/%{_bindir}/%{name}.py $RPM_BUILD_ROOT/%{_bindir}/%{name}
-rm $RPM_BUILD_ROOT/usr/etc/%{name}.conf.sample
+mv %{buildroot}%{_bindir}/%{name}.py %{buildroot}%{_bindir}/%{name}
+rm %{buildroot}/usr/etc/%{name}.conf.sample
 
-mv etc/hellanzb.conf.sample $RPM_BUILD_ROOT/%{_docdir}/%{name}/
-cp %{SOURCE1} $RPM_BUILD_ROOT/%{_docdir}/%{name}/README.Fedora
-
+mv etc/hellanzb.conf.sample %{buildroot}/%{_docdir}/%{name}/
+cp %{SOURCE1} %{buildroot}%{_docdir}/%{name}/
 
 %clean
-rm -rf $RPM_BUILD_ROOT
-
+rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
 %{_docdir}/%{name}/
-%{py_puresitedir}/*
+%{python_sitelib}/*
 %{_bindir}/%{name}
