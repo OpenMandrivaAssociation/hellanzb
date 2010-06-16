@@ -1,6 +1,6 @@
 Name:           hellanzb
 Version:        0.13
-Release:        %mkrel 3
+Release:        %mkrel 4
 Summary:        Hands-free nzb downloader and post processor
 
 Group:          Networking/News
@@ -12,6 +12,9 @@ Patch0:         hellanzb-configuration-location3.patch
 Patch1:         hellanzb-unrar-is-optional.patch
 Patch2:         hellanzb-remove-bogus-shebang.patch
 Patch3:         hellanzb-0.13-dont-attempt-multiple-groups.diff
+# (ahmad) add patch from debian to fix compatibility with Twisted 10.0.0
+# http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=573221
+Patch4:         007-Twisted_10.0.0_compat.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:  python-devel
 BuildRequires:  python-setuptools
@@ -39,6 +42,7 @@ sed --in-place 's|\*PKGNAME\*|%{name}|'   Hellanzb/Core.py
 %patch1
 %patch2
 %patch3
+%patch4 -p1 -b .twisted 
 
 
 %build
