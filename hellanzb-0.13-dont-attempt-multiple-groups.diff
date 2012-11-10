@@ -1,0 +1,16 @@
+--- Hellanzb/NZBLeecher/NZBParser.py.orig	2008-10-15 20:05:11.000000000 -0700
++++ Hellanzb/NZBLeecher/NZBParser.py	2008-10-15 20:10:32.000000000 -0700
+@@ -148,11 +148,12 @@
+             self.file = None
+             self.fileNeedsDownload = None
+                 
+         elif name == 'group':
+             newsgroup = self.parseUnicode(''.join(self.chars))
+-            self.file.groups.append(newsgroup)
++            #self.file.groups.append(newsgroup)
++	    self.file.group = newsgroup
+                         
+             self.chars = None
+                 
+         elif name == 'segment':
+             if self.number in self.segmentNumbers:

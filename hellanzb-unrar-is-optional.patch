@@ -1,0 +1,22 @@
+--- Hellanzb/Core.py.orig	2008-07-21 06:05:16.000000000 -0700
++++ Hellanzb/Core.py	2008-07-21 06:06:23.000000000 -0700
+@@ -94,11 +94,18 @@
+             Hellanzb.MAX_RATE = 0
+         else:
+             Hellanzb.MAX_RATE = int(Hellanzb.MAX_RATE)
+ 
+         if not hasattr(Hellanzb, 'UNRAR_CMD') or Hellanzb.UNRAR_CMD is None:
+-            Hellanzb.UNRAR_CMD = assertIsExe(['rar', 'unrar'])
++            # unrar is optional when it is not installed or not specified in conf
++            Hellanzb.UNRAR_CMD = None
++            try:
++                Hellanzb.UNRAR_CMD = assertIsExe(['rar', 'unrar'])
++            except FatalError:
++                # if unrar isn't available, skip it and warn the user
++                print "Warning -- unrar was not found. Disabling unraring."
++                Hellanzb.SKIP_UNRAR = True
+         else:
+             Hellanzb.UNRAR_CMD = assertIsExe([Hellanzb.UNRAR_CMD])
+ 
+         if not hasattr(Hellanzb, 'PAR2_CMD') or Hellanzb.PAR2_CMD is None:
+             Hellanzb.PAR2_CMD = assertIsExe(['par2'])

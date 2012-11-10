@@ -1,0 +1,10 @@
+--- Hellanzb/Growl.py.orig	2008-07-19 18:08:13.000000000 -0700
++++ Hellanzb/Growl.py	2008-07-19 18:08:45.000000000 -0700
+@@ -1,7 +1,5 @@
+-#!/usr/bin/env python
+-
+ """Growl 0.6 Network Protocol Client for Python"""
+ __version__ = "0.6" # will always match Growl version
+ __author__ = "Rui Carmo (http://the.taoofmac.com)"
+ __copyright__ = "(C) 2004 Rui Carmo. Code under BSD License."
+ __contributors__ = "Ingmar J Stein (Growl Team)"

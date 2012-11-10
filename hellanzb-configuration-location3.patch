@@ -1,0 +1,42 @@
+--- Hellanzb/Core.py.orig	2008-08-05 23:50:37.000000000 -0700
++++ Hellanzb/Core.py	2008-08-06 00:02:39.000000000 -0700
+@@ -32,14 +32,13 @@
+             return
+         else:
+             error('Unable to load specified config file: ' + optionalConfigFile)
+             sys.exit(1)
+ 
+-    # look for conf in this order: sys.prefix, ./, or ./etc/
+-    confDirs = [os.path.join(sys.prefix, 'etc')]
++    # look for conf in this order: $HOME/, /etc, or ./
++    confDirs = [os.environ['HOME'], '/etc']
+     try:
+-        confDirs.append(os.path.join(os.getcwd(), 'etc'))
+         confDirs.append(os.getcwd())
+     except OSError, ose:
+         if ose.errno != 2:
+             raise
+         # OSError: [Errno 2] No such file or directory. cwd doesn't exist
+@@ -49,16 +48,22 @@
+     if Hellanzb.SYSNAME == "Darwin":
+         confDirs[0] = '/opt/local/etc'
+ 
+     for dir in confDirs:
+         file = os.path.join(dir, 'hellanzb.conf')
++        file2 = os.path.join(dir, '.hellanzb.conf')
+         
+         if loadConfig(file):
+             Hellanzb.CONFIG_FILENAME = file
+             return
++        elif loadConfig(file2):
++            Hellanzb.CONFIG_FILENAME = file2
++            return
+         
+     error('Could not find configuration file in the following dirs: ' + str(confDirs))
++    readmeFedora = "*DOCDIR*/*PKGNAME*/README.Fedora"
++    print open(readmeFedora).read().strip()
+     sys.exit(1)
+     
+ def loadConfig(fileName):
+     """ Attempt to load the specified config file. If successful, clean the variables/data the
+     config file has setup """
