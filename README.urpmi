@@ -1,0 +1,8 @@
+Thanks for installing the Mandriva package of hellanzb. To configure
+the client for use, copy /usr/share/doc/hellanzb/hellanzb.conf.sample to
+$HOME/.hellanzb.conf and edit it appropriately. To start hellanzb, just
+run 'hellanzb -D'. To enqueue nzbs, drop them in the queue directory as
+configured in your $HOME/.hellanzb.conf.
+
+If you want Hellanzb to automatically unrar downloaded files, install
+the 'unrar' from the Mandriva Non-free repository.

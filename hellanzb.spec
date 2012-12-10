@@ -68,3 +68,29 @@ rm -rf %{buildroot}
 %{_docdir}/%{name}/
 %{python_sitelib}/*
 %{_bindir}/%{name}
+
+
+%changelog
+* Fri Nov 12 2010 Bogdano Arendartchuk <bogdano@mandriva.com> 0.13-5mdv2011.0
++ Revision: 596963
+- rebuild for python 2.7
+
+* Wed Jun 16 2010 Ahmad Samir <ahmadsamir@mandriva.org> 0.13-4mdv2010.1
++ Revision: 548176
+- add patch from debian to fix compatibility with Twisted 10.0.0
+
+* Mon Mar 29 2010 Ahmad Samir <ahmadsamir@mandriva.org> 0.13-3mdv2010.1
++ Revision: 528812
+- fix README.urpmi file, it shouldn't mention Fedora
+- clean spec
+
+* Fri Sep 11 2009 Thierry Vignaud <tv@mandriva.org> 0.13-2mdv2010.0
++ Revision: 437864
+- rebuild
+
+* Thu Mar 05 2009 Jérôme Soyer <saispo@mandriva.org> 0.13-1mdv2009.1
++ Revision: 349030
+- Fix python files
+- import hellanzb
+
+
