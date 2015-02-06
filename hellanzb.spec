@@ -1,6 +1,6 @@
 Name:           hellanzb
 Version:        0.13
-Release:        %mkrel 5
+Release:        6
 Summary:        Hands-free nzb downloader and post processor
 
 Group:          Networking/News
