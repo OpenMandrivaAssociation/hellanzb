@@ -5,7 +5,7 @@ Summary:        Hands-free nzb downloader and post processor
 
 Group:          Networking/News
 License:        BSD
-URL:            http://www.hellanzb.com/trac/
+URL:            https://www.hellanzb.com/trac/
 Source0:        http://www.hellanzb.com/distfiles/hellanzb-%{version}.tar.gz
 Source1:        README.urpmi
 Patch0:         hellanzb-configuration-location3.patch
